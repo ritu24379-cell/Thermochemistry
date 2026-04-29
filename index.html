@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thermochemistry | The Energy of Matter</title>
+    <meta name="description" content="Explore the fascinating world of thermochemistry. Learn about enthalpy, systems, laws of thermodynamics, and calculate heat transfer.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Background Blobs -->
+    <div class="bg-blob"></div>
+    <div class="bg-blob bg-blob-2"></div>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo gradient-text">ThermoChem</div>
+            <div class="nav-links">
+                <a href="#definition">Concept</a>
+                <a href="#systems">Systems</a>
+                <a href="#enthalpy">Enthalpy</a>
+                <a href="#calculator">Calculator</a>
+            </div>
+            <a href="#calculator" class="btn btn-primary" style="padding: 0.8rem 2rem; font-size: 0.8rem;">Try Calc</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content container">
+            <h1 class="gradient-text">Energy in Motion</h1>
+            <p>Master the thermal dynamics that power our universe, from molecular bonds to cosmic heat transfer.</p>
+            <a href="#definition" class="btn btn-primary">Begin the Journey</a>
+        </div>
+    </header>
+
+    <section id="definition" class="container reveal">
+        <div class="section-header">
+            <h2 class="gradient-text">The Essence</h2>
+            <p style="color: var(--text-muted);">Defining the science of heat and transformation.</p>
+        </div>
+        <div class="glass-card">
+            <p style="font-size: 1.2rem; line-height: 2;">Thermochemistry is the study of the <strong>heat energy</strong> associated with chemical reactions and physical transformations. Whether a reaction releases energy (exothermic) or absorbs it (endothermic), thermochemistry quantifies these invisible forces, bridging the gap between molecular interactions and observable physics.</p>
+        </div>
+    </section>
+
+    <section id="systems" class="container reveal">
+        <div class="section-header">
+            <h2 class="gradient-text">Systems & Surroundings</h2>
+            <p style="color: var(--text-muted);">How we define boundaries in the thermal universe.</p>
+        </div>
+        
+        <div class="card-grid">
+            <div class="glass-card">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Open System</h3>
+                <p>An unrestricted boundary allowing the free exchange of both <strong>matter and energy</strong> with the surroundings.</p>
+            </div>
+            <div class="glass-card">
+                <h3 style="color: var(--secondary); margin-bottom: 1rem;">Closed System</h3>
+                <p>A selective boundary that permits the flow of <strong>energy</strong> (heat/work) but keeps matter contained.</p>
+            </div>
+            <div class="glass-card">
+                <h3 style="color: white; margin-bottom: 1rem;">Isolated System</h3>
+                <p>A theoretical perfect barrier where <strong>neither matter nor energy</strong> can escape or enter the system.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="enthalpy" class="container reveal">
+        <div class="section-header">
+            <h2 class="gradient-text">Enthalpy Universe</h2>
+            <p style="color: var(--text-muted);">Mapping the various states of thermal content.</p>
+        </div>
+        
+        <div class="enthalpy-list">
+            <div class="enthalpy-item">
+                <div class="symbol-box">ΔH<sub>f</sub></div>
+                <div>
+                    <h4 style="font-size: 1.3rem;">Standard Enthalpy of Formation</h4>
+                    <p style="color: var(--text-muted);">Heat change when one mole of a substance forms from elements in their standard states.</p>
+                </div>
+            </div>
+            <div class="enthalpy-item">
+                <div class="symbol-box">ΔH<sub>c</sub></div>
+                <div>
+                    <h4 style="font-size: 1.3rem;">Standard Enthalpy of Combustion</h4>
+                    <p style="color: var(--text-muted);">Energy released when one mole of a substance undergoes complete combustion.</p>
+                </div>
+            </div>
+            <div class="enthalpy-item">
+                <div class="symbol-box">ΔH<sub>n</sub></div>
+                <div>
+                    <h4 style="font-size: 1.3rem;">Enthalpy of Neutralization</h4>
+                    <p style="color: var(--text-muted);">Heat evolved during the reaction of an acid and a base to form water.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator" class="container reveal">
+        <div class="section-header">
+            <h2 class="gradient-text">Heat Calculator</h2>
+            <p style="color: var(--text-muted);">Quantify the energy transfer in your experiments.</p>
+        </div>
+        
+        <div class="calc-container">
+            <div class="input-group">
+                <label style="color: var(--text-muted);">Mass (m) in grams</label>
+                <input type="number" id="mass" placeholder="e.g. 100">
+            </div>
+            <div class="input-group" style="margin-top: 1.5rem;">
+                <label style="color: var(--text-muted);">Specific Heat (c) in J/g°C</label>
+                <input type="number" id="specHeat" placeholder="e.g. 4.18">
+            </div>
+            <div class="input-group" style="margin-top: 1.5rem;">
+                <label style="color: var(--text-muted);">Temp Change (ΔT) in °C</label>
+                <input type="number" id="tempChange" placeholder="e.g. 15">
+            </div>
+            <button class="btn btn-primary" style="width: 100%; margin-top: 2rem;" onclick="calculateHeat()">Calculate Energy</button>
+            
+            <div class="result" id="resultBox" style="display: none; margin-top: 2rem; padding: 2rem; background: var(--glass); border-radius: 20px; text-align: center;">
+                <p style="color: var(--text-muted);">Energy Transferred (q):</p>
+                <span id="qResult" style="font-size: 2.5rem; font-weight: 800; color: var(--secondary);">0</span> <span style="font-size: 1.5rem;">Joules</span>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 100px 0; border-top: 1px solid var(--glass-border); text-align: center;">
+        <div class="logo gradient-text" style="font-size: 2rem; margin-bottom: 1rem;">ThermoChem</div>
+        <p style="color: var(--text-muted);">&copy; 2026. Exploring the thermodynamics of the future.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
